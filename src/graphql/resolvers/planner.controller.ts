@@ -15,7 +15,7 @@ export default class PlannerController {
         async getPlannerDetail(_: any, { id }: { id: string }) {
             try {
                 let planner = await Planner.findById(id)
-
+                console.log(`{Planner founded}`)
                 return planner ?? null
             } catch (err) {
                 console.log(err)
@@ -29,6 +29,7 @@ export default class PlannerController {
             { values: { title, description } }: CreatePlannerPayload,
             context: any)
         {
+            console.log(`Mutation: Create Planner`)
             const user = authChecking(context) as { id: string, }
             if (!user) {
                 throw new AuthenticationError("401")

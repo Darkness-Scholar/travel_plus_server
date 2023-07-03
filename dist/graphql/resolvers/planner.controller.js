@@ -22,6 +22,7 @@ PlannerController.Query = {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let planner = yield planner_model_1.default.findById(id);
+                console.log(`{Planner founded}`);
                 return planner !== null && planner !== void 0 ? planner : null;
             }
             catch (err) {
@@ -34,6 +35,7 @@ PlannerController.Mutation = {
     createPlanner(_, { values: { title, description } }, context) {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(`Mutation: Create Planner`);
             const user = (0, authChecking_1.default)(context);
             if (!user) {
                 throw new apollo_server_1.AuthenticationError("401");
